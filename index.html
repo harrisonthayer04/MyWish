@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>MyWish</title>
     <style>
-        /* Same styles as before */
-        @font-face {font-family: 'MyWishFont';
-                    src: url('MRFLemonberrySans.otf');
-            }
+        @font-face {
+            font-family: 'MyWishFont';
+            src: url('MRFLemonberrySans.otf');
+        }
         h1 {
             background-color: rgb(161, 113, 136);
             color: rgb(0, 0, 0);
@@ -19,16 +19,39 @@
         }
         body {
             background-color: rgb(161, 113, 136);
+            margin: 0;
+            padding: 0;
         }
         h2 {
             font-family: 'MyWishFont';
         }
         .container {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            flex-direction: row;
-            gap: 100px;
+            gap: 20px;
+            padding: 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .tab-button {
+            background-color: white;
+            color: black;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'MyWishFont';
+            font-weight: bold;
+        }
+        .tab-button.active {
+            color: rgb(161, 113, 136);
+        }
+        .tab-button.inactive {
+            color: lightgrey;
         }
         .form-container {
             background-color: white;
@@ -36,15 +59,30 @@
             margin: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            width: 300px;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
+            display: none;
         }
-        input[type="text"], input[type="password"], input[type="email"] {
-            width: 75%;
+        .form-container.active {
+            display: block;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group input[type="text"], 
+        .form-group input[type="password"], 
+        .form-group input[type="email"], 
+        .form-group input[type="tel"] {
+            width: calc(100% - 20px);
             padding: 10px;
-            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .checkbox-container {
+            text-align: left;
+            margin: 10px 0;
         }
         input[type="submit"] {
             background-color: rgb(255,255,255);
@@ -63,26 +101,70 @@
     <h1>Welcome to MyWish</h1>
 
     <div class="container">
-        <div class="form-container">
-            <h2>Login</h2>
+        <div class="tabs">
+            <div id="sign-in-tab" class="tab-button active" onclick="showForm('sign-in')">Sign In</div>
+            <div id="sign-up-tab" class="tab-button inactive" onclick="showForm('sign-up')">Sign Up</div>
+        </div>
+
+        <div id="sign-in" class="form-container active">
+            <h2>Sign In</h2>
             <form action="/login" method="POST">
-                <input type="text" name="username" placeholder="Username" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
-                <input type="submit" value="Login">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required><br>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required><br>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" name="remember-me"> Remember me
+                    </label>
+                </div>
+                <input type="submit" value="Sign In">
             </form>
         </div>
 
-
-        <div class="form-container">
-            <h2>Create Account</h2>
+        <div id="sign-up" class="form-container">
+            <h2>Sign Up</h2>
             <form action="/register" method="POST">
-                <input type="text" name="username" placeholder="Username" required><br>
-                <input type="email" name="email" placeholder="Email" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Name" required><br>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required><br>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number" required><br>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" required><br>
+                </div>
+                <div class="checkbox-container">
+                    <label>
+                        <input type="checkbox" name="receive-emails"> Remember me
+                    </label>
+                </div>
                 <input type="submit" value="Create Account">
             </form>
         </div>
     </div>
+
+    <script>
+        function showForm(formId) {
+            document.getElementById('sign-in').classList.remove('active');
+            document.getElementById('sign-up').classList.remove('active');
+            
+            document.getElementById('sign-in-tab').classList.remove('active');
+            document.getElementById('sign-up-tab').classList.remove('active');
+            
+            document.getElementById('sign-in-tab').classList.add('inactive');
+            document.getElementById('sign-up-tab').classList.add('inactive');
+            
+            document.getElementById(formId).classList.add('active');
+            document.getElementById(formId + '-tab').classList.add('active');
+            document.getElementById(formId + '-tab').classList.remove('inactive');
+        }
+    </script>
 
 </body>
 </html>
