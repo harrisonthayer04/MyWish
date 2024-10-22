@@ -21,10 +21,10 @@ def login():
     email = request.form['email']
     password = request.form['password']
     
-    if email in users and users[email]['password'] == password: 
+    if email in users and users[email]['password'] == password:  # Comparing plain text passwords
         session['user_email'] = email
         flash('Logged in successfully!')
-        return redirect(url_for('new_page'))
+        return redirect(url_for('new-page'))
     else:
         flash('Invalid email or password. Please try again.')
         return redirect(url_for('index'))
@@ -45,7 +45,7 @@ def register():
         flash('Email already registered. Please use a different email.')
         return redirect(url_for('index'))
     
-    users[email] = {'name': name, 'password': password}
+    users[email] = {'name': name, 'password': password}  # Storing plain text password
     flash('Registration successful! Please log in.')
     return redirect(url_for('index'))
 

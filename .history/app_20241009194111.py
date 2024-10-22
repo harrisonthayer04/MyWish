@@ -24,7 +24,7 @@ def login():
     if email in users and users[email]['password'] == password: 
         session['user_email'] = email
         flash('Logged in successfully!')
-        return redirect(url_for('new_page'))
+        return redirect(url_for('new-page'))
     else:
         flash('Invalid email or password. Please try again.')
         return redirect(url_for('index'))

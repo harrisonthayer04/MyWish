@@ -1,8 +1,11 @@
 # app.py
 from flask import Flask, render_template, request, redirect, url_for, flash, session
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'your_secret_key'  # Change this to a random secret key
+
+# In-memory user storage (replace with a database in a real application)
 users = {}
 
 @app.route('/')
@@ -14,17 +17,17 @@ def new_page():
     if 'user_email' not in session:
         flash('Please log in to access this page.')
         return redirect(url_for('index'))
-    return render_template('new-page.html')
- 
+    return render_template('/new-page.html')
+
 @app.route('/login', methods=['POST'])
 def login():
     email = request.form['email']
     password = request.form['password']
     
-    if email in users and users[email]['password'] == password: 
+    if email in users and check_password_hash(users[email]['password'], password):
         session['user_email'] = email
         flash('Logged in successfully!')
-        return redirect(url_for('new_page'))
+        return redirect(url_for('new-page'))
     else:
         flash('Invalid email or password. Please try again.')
         return redirect(url_for('index'))
@@ -45,7 +48,8 @@ def register():
         flash('Email already registered. Please use a different email.')
         return redirect(url_for('index'))
     
-    users[email] = {'name': name, 'password': password}
+    hashed_password = generate_password_hash(password)
+    users[email] = {'name': name, 'password': hashed_password}
     flash('Registration successful! Please log in.')
     return redirect(url_for('index'))
 
