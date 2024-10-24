@@ -116,8 +116,8 @@
 <body>
     <h1>Welcome to MyWish</h1>
 
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
+    <div class="container"> 
+        <!--{% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 <ul class="flash-messages">
                     {% for category, message in messages %}
@@ -126,6 +126,7 @@
                 </ul>
             {% endif %}
         {% endwith %}
+            -->
 
         <div class="tabs">
             <div id="sign-in-tab" class="tab-button active" onclick="showForm('sign-in')">Sign In</div>
