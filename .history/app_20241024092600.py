@@ -13,7 +13,6 @@ class item():
         self.Priority = _priority
     def getItemInfo(self):
         return [self.Name, self.Description, self.Price, self.Priority]
-    
 class preferences():
     def __init__(self, _color1, _color2, _color3, 
                  _shirtSize, _pantSizeLength, _pantSizeWidth,

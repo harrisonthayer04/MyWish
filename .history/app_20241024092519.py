@@ -13,9 +13,8 @@ class item():
         self.Priority = _priority
     def getItemInfo(self):
         return [self.Name, self.Description, self.Price, self.Priority]
-    
 class preferences():
-    def __init__(self, _color1, _color2, _color3, 
+    def __init__(_color1, _color2, _color3, 
                  _shirtSize, _pantSizeLength, _pantSizeWidth,
                  _womensPantsSize, _shoeSize, _ringSize,
                  _jewleryMetalType) -> None:
@@ -23,13 +22,6 @@ class preferences():
         self.color2 = _color2
         self.color3 = _color3
         self.shirtSize = _shirtSize
-        self.pantSizeLength = _pantSizeLength
-        self.pantSizeWidth = _pantSizeWidth
-        self.womensPantsSize = _womensPantsSize
-        self.shoeSize = _shoeSize
-        self.ringSize = _ringSize
-        self.jewleryMetalType = _jewleryMetalType
-
     def getItemInfo(self):
         return [self.Name, self.Description, self.Price, self.Priority]
 

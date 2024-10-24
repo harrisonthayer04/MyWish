@@ -6,7 +6,26 @@
     <style>
         @font-face {
             font-family: 'MyWishFont';
-            src: local(Helvetica Neue);
+            src: local()
+        }
+        .top-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: 2px solid rgb(161, 113, 136);
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'MyWishFont';
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .top-button:hover {
+            background-color: rgb(161, 113, 136);
+            color: white;
         }
         h1 {
             background-color: rgba(161, 113, 136, 0);
