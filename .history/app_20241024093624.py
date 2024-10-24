@@ -7,6 +7,7 @@ from models import db, User, Preferences, WishList, WishListItem
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wishlist_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = 'key'
 
 db.init_app(app)
 
@@ -50,46 +51,14 @@ def register():
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
-
-    if User.query.filter_by(email=email).first():
+    # print(name, email, password) ~> useful for debugging
+    if email in users:
         flash('Email already registered. Please use a different email.')
         return redirect(url_for('index'))
-
-    new_user = User(name=name, email=email, password=password)
-    db.session.add(new_user)
-    db.session.commit()
+    
+    users[email] = {'name': name, 'password': password}
     flash('Registration successful! Please log in.')
     return redirect(url_for('index'))
-
-@app.route('/preferences', methods=['GET', 'POST'])
-def preferences():
-    if 'user_email' not in session:
-        flash('Please log in to set your preferences.')
-        return redirect(url_for('index'))
-
-    user = User.query.filter_by(email=session['user_email']).first()
-
-    if request.method == 'POST':
-        prefs = Preferences(
-            color1=request.form['color1'],
-            color2=request.form['color2'],
-            color3=request.form['color3'],
-            shirt_size=request.form['shirt_size'],
-            pant_size_length=request.form['pant_size_length'],
-            pant_size_width=request.form['pant_size_width'],
-            womens_pants_size=request.form['womens_pants_size'],
-            shoe_size=request.form['shoe_size'],
-            ring_size=request.form['ring_size'],
-            jewelry_metal_type=request.form['jewelry_metal_type'],
-            user_id=user.id
-        )
-        db.session.add(prefs)
-        db.session.commit()
-        flash('Preferences saved!')
-        return redirect(url_for('new_page'))
-
-    return render_template('preferences.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
