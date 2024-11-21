@@ -1,46 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyWish Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f9f9f9;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        header img {
-            width: 50px;
-            vertical-align: middle;
-        }
-        header h1 {
-            display: inline;
-            font-size: 2.5em;
-            color: #333;
-        }
-        h2 {
-            color: #444;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        .technologies {
-            margin-top: 20px;
-        }
-    </style>
-</head>
 <body>
     <header>
         <h1>MyWish Project</h1>
