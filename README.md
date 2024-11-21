@@ -3,7 +3,9 @@
 <body>
     <header>
         <h1>MyWish Project</h1>
-        <img src="[https://images.vexels.com/content/273182/preview/cute-gift-icon-3305e7.png](https://cdn4.iconfinder.com/data/icons/christmas-joy-1/512/Christmas_cartoon_funny_cute-12-512.png)" alt="Gift Icon">
+        <p> 
+            Team 11's Project
+        </p>
     </header>
     <section>
                 <h2>Objective</h2>
