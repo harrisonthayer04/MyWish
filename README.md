@@ -3,9 +3,6 @@
 <body>
     <header>
         <h1>MyWish Project</h1>
-        <p> 
-            Team 11's Project
-        </p>
     </header>
     <section>
                 <h2>Objective</h2>
