@@ -3,7 +3,7 @@
 <body>
     <header>
         <h1>MyWish Project</h1>
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-brelm&psig=AOvVaw1tZzDYqxBkRJV4guL3PmpN&ust=1732292066140000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjrt4jp7YkDFQAAAAAdAAAAABAE" alt="Gift Icon">
+        <img src="[https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngegg.com%2Fen%2Fpng-brelm&psig=AOvVaw1tZzDYqxBkRJV4guL3PmpN&ust=1732292066140000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOjrt4jp7YkDFQAAAAAdAAAAABAE](https://e7.pngegg.com/pngimages/886/221/png-clipart-gift-icon-gift-miscellaneous-painted.png)" alt="Gift Icon">
     </header>
     <section>
                 <h2>Objective</h2>
