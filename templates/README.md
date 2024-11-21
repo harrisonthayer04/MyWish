@@ -43,7 +43,6 @@
 </head>
 <body>
     <header>
-        <img src="https://png.pngtree.com/png-clipart/20230917/original/pngtree-layered-gift-icon-with-boxes-with-gifts-on-top-vector-png-image_12280128.png" alt="Gift Icon">
         <h1>MyWish Project</h1>
     </header>
     
