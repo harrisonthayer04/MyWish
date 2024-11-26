@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ user.name }}'s Wishlist - MyWish</title>
+    <style>
+        @font-face {
+            font-family: 'MyWishFont';
+            src: local(Helvetica Neue);
+        }
+
+        body {
+            background-color: rgb(161, 113, 136);
+            background-image: url('https://images.pexels.com/photos/5485173/pexels-photo-5485173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-blend-mode: multiply;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: rgba(161, 113, 136, 0);
+            color: rgb(0, 0, 0);
+            -webkit-text-stroke-width: 0px;
+            -webkit-text-stroke-color: brown;
+            text-align: center;
+            font-size: 100px;
+            font-family: 'MyWishFont';
+        }
+
+        h2 {
+            font-family: 'MyWishFont';
+            text-align: center;
+            font-size: 36px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+        }
+
+        .wishlist-display,
+        .preferences-display {
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .item-details {
+            font-size: 18px;
+        }
+
+        .color-block {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{ user.name }}'s Wishlist</h1>
+    <div class="container">
+        <div class="wishlist-display">
+            <h2>Wishlist Items</h2>
+            <ul id="wishlistItems">
+                {% if items %}
+                {% for item in items %}
+                <li>
+                    <div class="item-details">
+                        <strong>{{ item.name }}</strong><br>
+                        {% if item.description %}
+                        <em>{{ item.description }}</em><br>
+                        {% endif %}
+                        {% if item.price %}
+                        Price: ${{ "%.2f"|format(item.price) }}<br>
+                        {% endif %}
+                        Priority:
+                        {% if item.priority == 1 %}Low{% elif item.priority == 2 %}Medium{% else %}High{% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+                {% else %}
+                <li>No items in the wishlist.</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="preferences-display">
+            <h2>Preferences</h2>
+            <ul id="preferencesDisplay">
+                {% if preferences %}
+                <li>Favorite Color 1:
+                    <span class="color-block" style="background-color: {{ preferences.color1 }};"></span>
+                </li>
+                <li>Favorite Color 2:
+                    <span class="color-block" style="background-color: {{ preferences.color2 }};"></span>
+                </li>
+                <li>Favorite Color 3:
+                    <span class="color-block" style="background-color: {{ preferences.color3 }};"></span>
+                </li>
+                <li>Shirt Size: {{ preferences.shirt_size }}</li>
+                <li>Pants Size:
+                    {% if preferences.pant_size_width and preferences.pant_size_length %}
+                    Width: {{ preferences.pant_size_width }}, Length: {{ preferences.pant_size_length }}
+                    {% elif preferences.womens_pants_size %}
+                    Women's Size: {{ preferences.womens_pants_size }}
+                    {% else %}
+                    Not specified
+                    {% endif %}
+                </li>
+                <li>Shoe Size: {{ preferences.shoe_size }}</li>
+                <li>Ring Size: {{ preferences.ring_size }}</li>
+                <li>Jewelry Metal Type: {{ preferences.jewelry_metal_type }}</li>
+                {% else %}
+                <li>No preferences set.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

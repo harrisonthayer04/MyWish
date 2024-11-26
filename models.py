@@ -10,6 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
     preferences = db.relationship('Preferences', uselist=False, backref='user')
     wishlists = db.relationship('WishList', backref='user', lazy=True)
+    share_token = db.Column(db.String(64), unique=True, nullable=True)
 
 class Preferences(db.Model):
     __tablename__ = 'preferences'
