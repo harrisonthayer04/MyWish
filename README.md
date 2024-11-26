@@ -40,12 +40,13 @@
         <h2>Sharing</h2>
         <p>
             The wishlist and preferences can be shared with friends and family, helping them choose the perfect gift.
+            Users can generate a link for others to view their wishlist and preferences.
         </p>
     </section>
     <section class="technologies">
         <h2>Technologies Used</h2>
         <p><strong>Front-End:</strong> HTML, CSS</p>
-        <p><strong>Back-End:</strong> Python</p>
+        <p><strong>Back-End:</strong> Flask, SQLAlchemy</p>
     </section>
 </body>
 </html>
