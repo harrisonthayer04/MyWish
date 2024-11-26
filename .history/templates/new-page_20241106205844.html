@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Create your wishes!</title>
+    <style>
+        @font-face {
+            font-family: 'MyWishFont';
+            src: url('MRFLemonberrySans.otf');
+        }
+        body {
+            background-color: rgb(161, 113, 136);
+            background-image: url('https://images.pexels.com/photos/5485173/pexels-photo-5485173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-blend-mode: multiply;
+            margin: 0;
+            padding: 0;
+            font-family: 'MyWishFont', sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+        }
+        .forms-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-section {
+            width: 100%;
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 48px;
+        }
+        p {
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: 2px solid rgb(161, 113, 136);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button:hover {
+            background-color: rgb(161, 113, 136);
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 36px;
+            margin-top: 40px;
+        }
+        input[type="color"] {
+            width: 100%;
+            height: 40px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'MyWishFont', sans-serif;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'MyWishFont', sans-serif;
+            font-size: 16px;
+        }
+        #wishlistForm {
+            margin-bottom: 40px;
+        }
+        .wishlist-display {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            align-self: flex-start;
+            position: sticky;
+            top: 20px;
+        }
+        .wishlist-display h2 {
+            margin-top: 0;
+        }
+        #wishlistItems {
+            list-style-type: none;
+            padding: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        #wishlistItems li {
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create your wishlist!</h1>
+        <div class="content-wrapper">
+            <div class="forms-container">
+                <!-- Wishlist Form -->
+                <form id="wishlistForm" action="{{ url_for('add_item') }}" method="POST">
+                    <h2>Add Item</h2>
+                    <form id="wishlistForm">
+                        <div class="form-group">
+                            <label for="itemName">Item Name:</label>
+                            <input type="text" id="itemName" name="itemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemDescription">Description:</label>
+                            <textarea id="itemDescription" name="itemDescription" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemPrice">Estimated Price:</label>
+                            <input type="number" id="itemPrice" name="itemPrice" min="0" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemPriority">Priority:</label>
+                            <select id="itemPriority" name="itemPriority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-button">Add to Wishlist</button>
+                    </form>
+                </div>
+                <!-- Preferences Form -->
+                <div class="form-section">
+                    <h2>Your Preferences</h2>
+                    <form id="preferencesForm">
+                        <div class="form-group">
+                            <label for="favoriteColor">Favorite Color 1:</label>
+                            <input type="color" id="favoriteColor" name="favoriteColor">
+                            <label for="favoriteColor">Favorite Color 2:</label>
+                            <input type="color" id="favoriteColor" name="favoriteColor">
+                            <label for="favoriteColor">Favorite Color 3:</label>
+                            <input type="color" id="favoriteColor" name="favoriteColor">
+                        </div>
+                        <div class="form-group">
+                            <label for="shirtSize">Shirt Size:</label>
+                            <select id="shirtSize" name="shirtSize">
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Pants Size:</label>
+                            <div class="pants-size-inputs">
+                                <div class="measurement-inputs">
+                                    <input type="number" id="waistSize" name="waistSize" min="20" max="60" placeholder="Waist">
+                                    <span></span>
+                                    <input type="number" id="lengthSize" name="lengthSize" min="20" max="40" placeholder="Length">
+                                </div>
+                                <span>OR</span>
+                                <input type="text" id="womensPantsSize" name="womensPantsSize" placeholder="Women's Size (e.g., 8, 10, 12)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shoeSize">Shoe Size:</label>
+                            <input type="number" id="shoeSize" name="shoeSize" min="0" max="20" step="0.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="ringSize">Ring Size:</label>
+                            <input type="number" id="ringSize" name="ringSize" min="3" max="15" step="0.5" placeholder="e.g., 7.5">
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Jewelry Metal:</label>
+                            <div class="radio-group">
+                                <input type="radio" id="goldPreference" name="jewelryMetal" value="gold">
+                                <label for="goldPreference">Gold</label>
+                                <input type="radio" id="silverPreference" name="jewelryMetal" value="silver">
+                                <label for="silverPreference">Silver</label>
+                                <input type="radio" id="bothPreference" name="jewelryMetal" value="both">
+                                <label for="bothPreference">Both</label>
+                                <input type="radio" id="otherPreference" name="jewelryMetal" value="other">
+                                <label for="otherPreference">Other</label>
+                            </div>
+                            <input type="text" id="otherJewelryMetal" name="otherJewelryMetal" placeholder="If other, specify other metal">
+                        </div>
+                        <button type="submit" class="submit-button">Save Preferences</button>
+                    </form>
+                </div>
+            </div>
+            <div class="wishlist-display">
+                <h2>Your Wishlist</h2>
+                <ul id="wishlistItems">
+                </ul>
+            </div>
+        </div>
+        <a href="{{ url_for('logout') }}" class="back-button">Sign Out</a>
+    </div>
+</body>
+</html>

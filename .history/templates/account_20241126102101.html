@@ -1,0 +1,225 @@
+<!-- templates/account.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Account Settings</title>
+    <style>
+        @font-face {
+            font-family: 'MyWishFont';
+            src: url('MRFLemonberrySans.otf');
+        }
+        body {
+            background-color: rgb(161, 113, 136);
+            background-image: url('https://images.pexels.com/photos/5485173/pexels-photo-5485173.jpeg');
+            background-size: cover;
+            background-blend-mode: multiply;
+            margin: 0;
+            padding: 0;
+            font-family: 'MyWishFont', sans-serif;
+        }
+        .remove-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.remove-button:hover {
+    background-color: #e60000;
+}
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .forms-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 300px;
+        }
+        .form-section {
+            width: 100%;
+        }
+        h1 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 48px;
+        }
+        p {
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border: 2px solid rgb(161, 113, 136);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .back-button:hover {
+            background-color: rgb(161, 113, 136);
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: rgb(0, 0, 0);
+            text-align: center;
+            font-size: 36px;
+            margin-top: 40px;
+        }
+        input[type="color"],
+        input[type="number"],
+        input[type="text"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'MyWishFont', sans-serif;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .submit-button {
+            background-color: rgb(161, 113, 136);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'MyWishFont', sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .submit-button:hover {
+            background-color: rgb(140, 90, 120);
+        }
+        .wishlist-display {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            align-self: flex-start;
+            min-width: 250px;
+        }
+        .wishlist-display h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        #wishlistItems, #preferencesDisplay {
+            list-style-type: none;
+            padding: 0;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        #wishlistItems li, #preferencesDisplay li {
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        #wishlistItems li strong {
+            font-size: 18px;
+        }
+        /* Additional responsive styles */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .wishlist-display {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Settings</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for category, message in messages %}
+                        <li class="flash-message {{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <div class="content-wrapper">
+            <!-- Change Name Form -->
+            <div class="form-section">
+                <h2>Change Name</h2>
+                <form action="{{ url_for('change_name') }}" method="POST">
+                    <div class="form-group">
+                        <label for="newName">New Name:</label>
+                        <input type="text" id="newName" name="newName" required>
+                    </div>
+                    <button type="submit" class="submit-button">Change Name</button>
+                </form>
+            </div>
+
+
+        <div class="content-wrapper">
+            <!-- Change Password Form -->
+            <div class="form-section">
+                <h2>Change Password</h2>
+                <form action="{{ url_for('change_password') }}" method="POST">
+                    <div class="form-group">
+                        <label for="currentPassword">Current Password:</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm New Password:</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                    </div>
+                    <button type="submit" class="submit-button">Change Password</button>
+                </form>
+            </div>
+            <!-- Delete Account Form -->
+            <div class="form-section">
+                <h2>Delete Account</h2>
+                <p>Warning: This action cannot be undone.</p>
+                <form action="{{ url_for('delete_account') }}" method="POST">
+                    <div class="form-group">
+                        <label for="confirmPassword">Enter your password to confirm:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="submit-button" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">Delete Account</button>
+                </form>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="{{ url_for('new_page') }}" class="back-button">Back to Wishlist</a>
+        </div>
+    </div>
+</body>
+</html>
