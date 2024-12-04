@@ -57,7 +57,7 @@
     <section>
         <h2>Sharing</h2>
         <p> Scrolling further down, users can share their wishlist and preferences with others by clicking the "Share Your Wishlist" button.
-            This generates a link that allows others to view the user's wishlist and preferences.
+            This generates a link that allows others to view the user's wishlist and preferences, making gift giving easier than before!
         </p>
     </section>
     <section class="technologies">
