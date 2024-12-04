@@ -15,9 +15,21 @@
     </section>
     <section>
         <h2>MyWish Account</h2>
-        <p>First, sign up so our database can verify your account when logging in. 
+        <p>First, sign up so our database can verify the account when logging in. Enter the necessary information:           
+        </p>
+        <ul>
+            <li><strong>Name</strong></li>
+            <li><strong>Email</strong></li>
+            <li><strong>Phone Number</strong></li>
+            <li><strong>Password</strong></li>
+        </ul>
+        <p>
            Once signed up, you can sign in, and once verified, you will be redirected to the Wishlist page.
-           On this page, you can add items to your wishlist such as:
+        </p>
+    </section>
+    <section>
+        <h2>Wishlist Creation</h2>
+        <p>Once redirected to the main page, users can add items to their wishlist such as:
         </p>
         <ul>
             <li><strong>Item Name</strong></li>
