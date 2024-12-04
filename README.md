@@ -29,7 +29,7 @@
     </section>
     <section>
         <h2>Wishlist Creation</h2>
-        <p>Once redirected to the main page, users can add items to their wishlist such as:
+        <p>Once redirected to the main page, users can add items to their wishlist, such as:
         </p>
         <ul>
             <li><strong>Item Name</strong></li>
@@ -38,24 +38,26 @@
             <li><strong>Description</strong></li>
         </ul>
         <p>
-            Items are displayed in an organized wishlist on the right-hand side of the page. Items can also be deleted if needed. 
+            Items are displayed in an organized wishlist on the right-hand side of the page, and if needed, items can be deleted. 
         </p>
     </section>
     <section>
         <h2>Personal Preferences</h2>
-        <p>Users can save their personal preferences, such as:</p>
+        <p>Scrolling down, users can save their personal preferences, such as:</p>
         <ul>
             <li><strong>Favorite colors</strong></li>
             <li><strong>Pant size</strong></li>
             <li><strong>Ring size</strong></li>
             <li><strong>Shirt size</strong></li>
         </ul>
+        <p>
+            User preferences are automatically saved and can be changed at any time.
+        </p>
     </section>
     <section>
         <h2>Sharing</h2>
-        <p>
-            The wishlist and preferences can be shared with friends and family, helping them choose the perfect gift.
-            Users can generate a link for others to view their wishlist and preferences.
+        <p> Scrolling further down, users can share their wishlist and preferences with others by clicking the "Share Your Wishlist" button.
+            This generates a link that allows others to view the user's wishlist and preferences.
         </p>
     </section>
     <section class="technologies">
