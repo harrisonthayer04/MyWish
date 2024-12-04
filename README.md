@@ -62,6 +62,7 @@
     </section>
     <section class="technologies">
         <h2>Technologies Used</h2>
+        <p><strong>IDE:</strong> VSCode</p>
         <p><strong>Front-End:</strong> HTML, CSS</p>
         <p><strong>Back-End:</strong> Flask, SQLAlchemy</p>
     </section>
