@@ -7,15 +7,18 @@
     <section>
                 <h2>Objective</h2>
         <p>
-            Shopping for gifts can often be challenging when you're unsure what someone likes or needs. 
-            <strong>MyWish Website</strong> solves this problem by allowing users to create a personalized wishlist 
+            Shopping for gifts can be difficult when you're unsure what someone likes or needs. 
+            <strong>MyWish Website</strong> helps solve this problem by allowing users to create a personalized wishlist 
             and save their preferences. This makes gift-giving easier for friends and family, ensuring they 
             give something the user wants.
         </p>
     </section>
     <section>
-        <h2>Wishlist Creation</h2>
-        <p>Users can add items to their wishlist, including details such as:</p>
+        <h2>MyWish Account</h2>
+        <p>First, sign up so our database can verify your account when logging in. 
+           Once signed up, you can sign in, and once verified, you will be redirected to the Wishlist page.
+           On this page, you can add items to your wishlist such as:
+        </p>
         <ul>
             <li><strong>Item Name</strong></li>
             <li><strong>Price</strong></li>
@@ -23,7 +26,7 @@
             <li><strong>Description</strong></li>
         </ul>
         <p>
-            Items are displayed in an organized wishlist on the right-hand side of the page.
+            Items are displayed in an organized wishlist on the right-hand side of the page. Items can also be deleted if needed. 
         </p>
     </section>
     <section>
